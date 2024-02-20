@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
 
+    <!-- The API key is required to access the ArcGIS API for JavaScript -->
     <style>
       html,
       body,
@@ -15,9 +16,11 @@
       }
     </style>
 
+    <!-- these are the links to the arcgis api for javascript, the first link is the css file and the second link is the javascript file -->
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
 
+    <!-- this is the script that will be used to create the map, the script is written in javascript and it is used to create the map and the view of the map -->
     <script>
         require([
         "esri/config", 
@@ -37,12 +40,28 @@
               zoom: 13, // Zoom level
               container: "viewDiv" // Div element
             });
+
+            //copilot is extremely useful, i learned how to add a selector above to change baselayer maps
+            //this event listener is used to change the basemap layer by allowing the user to select a different basemap layer
+            //for some reason the navigation basemap layer is not working
+            document.getElementById('basemap-select').addEventListener('change', function() {
+              map.basemap = this.value;
+            });
             
         });
     </script>
 
   </head>
   <body>
+  <!-- this is the selector that allows the user to change the basemap layer -->
+    <select id="basemap-select">
+      <option value="arcgis-oceans">Oceans</option>
+      <option value="arcgis-topographic">Topographic</option>
+      <option value="arcgis-navigation">Navigation</option>
+    </select>
+
+    <!--copilot is extremely useful, i learned how to add a selector above to change baselayer maps--> 
+
     <div id="viewDiv"></div>
   </body>
 </html>
