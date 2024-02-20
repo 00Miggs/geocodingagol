@@ -4,4 +4,4 @@ adding a new trial run now with using API keys and running esri maps by utikizin
 
 # Link to Completed ArcGIS Maps SDK for Javascript BaseMap
 
-'https://00Miggs.github.io/helloWESRIjs/'
+'https://00Miggs.github.io/helloESRIjs/'
