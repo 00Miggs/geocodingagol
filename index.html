@@ -17,8 +17,8 @@
     </style>
 
     <!-- these are the links to the arcgis api for javascript, the first link is the css file and the second link is the javascript file -->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.28/"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.29/"></script>
 
     <!-- this is the script that will be used to create the map, the script is written in javascript and it is used to create the map and the view of the map -->
     <script>
@@ -42,35 +42,13 @@
                   width: 0.5,
                   color: "white"
                 }
-              },
-              visualVariables: [
-                {
-                  type: "size",
-                  field: "Pop_2015", // use the "Pop_2015" field to determine the size of each marker
-                  stops: [
-                    { value: 10, size: 10 },
-                    { value: 20, size: 20 },
-                    { value: 30, size: 30 }
-                  ]
-                },
-                {
-                  type: "color",
-                  field: "Pop_1985", // use the "Pop_1985" field to determine the color of each marker
-                  stops: [
-                    { value: 10, color: "blue" },
-                    { value: 20, color: "green" },
-                    { value: 30, color: "red" }
-                  ]
-                }
-              ]
-            };
+              }
+            }; // a simpler renderer is used to render the geojson layer thanks to copilot
 
             const geojsonLayer = new GeoJSONLayer({
-              url: "https://00miggs.github.io/geocodingagol/MegaCities_Miguel2.geojson", //MegaCities_Miguel2.geojson
-              copyright: "Miguel",
-              renderer: renderer,
-              orderByFields: ["Pop_2015 DESC"]
-              });
+              url: "https://00miggs.github.io/geocodingagol/MegaCities_Miguel2.geojson",
+              renderer: renderer
+            });
 
             //I saw that ordering the layers in the map is important, so i added the geojsonlayer to the map on Map instead of MapView
 
@@ -78,14 +56,12 @@
             basemap: "arcgis-oceans", // Basemap layer service // THERE IS AN ERROR HERE FROM TUTORIAL INSTEAD OF ARCGIS/TOPOGRAPHIC IT SHOULD BE ARCGIS-TOPOGRAPHIC to work with my API key
             layers: [geojsonLayer] // Add GeoJSON layer to the map now fixing the error...well at least trying to fix it
             });
-
-            console.log(geojsonLayer);
             
             const view = new MapView({
-              map: map,
-              center: [0, 0], // Longitude, latitude
-              zoom: 4, // Zoom level
-              container: "viewDiv"// Div element
+              container: "viewDiv",
+              center: [-168, 46],
+              zoom: 2,
+              map: map
             });
 
             //copilot is extremely useful, i learned how to add a selector above to change baselayer maps
