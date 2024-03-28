@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+    <title>AGOL GeoJSON</title>
 
     <!-- The API key is required to access the ArcGIS API for JavaScript -->
     <style>
@@ -31,12 +31,46 @@
 
             //this is the api key that is required to access the arcgis api for javascript which is my api key
             esriConfig.apiKey = "AAPK92af26d9842a48ccb552c0ae5e32b5ceJiMRXou8m248fRCfrZyuCLLaXmyktnHdb2BWly3eHgL4zpiJpIXKmteMHEg8TE6w";
-           
+
+            const renderer = {
+              type: "simple", // autocasts as new SimpleRenderer()
+              symbol: {
+                type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                size: 6,
+                color: "red",
+                outline: { // autocasts as new SimpleLineSymbol()
+                  width: 0.5,
+                  color: "white"
+                }
+              },
+              visualVariables: [
+                {
+                  type: "size",
+                  field: "Pop_2015", // use the "Pop_2015" field to determine the size of each marker
+                  stops: [
+                    { value: 10, size: 10 },
+                    { value: 20, size: 20 },
+                    { value: 30, size: 30 }
+                  ]
+                },
+                {
+                  type: "color",
+                  field: "Pop_1985", // use the "Pop_1985" field to determine the color of each marker
+                  stops: [
+                    { value: 10, color: "blue" },
+                    { value: 20, color: "green" },
+                    { value: 30, color: "red" }
+                  ]
+                }
+              ]
+            };
 
             const geojsonLayer = new GeoJSONLayer({
               url: "https://00miggs.github.io/geocodingagol/MegaCities_Miguel2.geojson", //MegaCities_Miguel2.geojson
-              copyright: "Miguel"
-            });
+              copyright: "Miguel",
+              renderer: renderer,
+              orderByFields: ["Pop_2015 DESC"]
+              });
 
             //I saw that ordering the layers in the map is important, so i added the geojsonlayer to the map on Map instead of MapView
 
@@ -52,7 +86,6 @@
               center: [0, 0], // Longitude, latitude
               zoom: 4, // Zoom level
               container: "viewDiv"// Div element
-              
             });
 
             //copilot is extremely useful, i learned how to add a selector above to change baselayer maps
