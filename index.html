@@ -25,8 +25,9 @@
         require([
         "esri/config", 
         "esri/Map", 
-        "esri/views/MapView"
-      ], function(esriConfig, Map, MapView) {
+        "esri/views/MapView",
+        "esri/layers/GeoJSONLayer"  //edit here
+      ], function(esriConfig, Map, GeoJSONLayer, MapView) { //geojsonlayer is used to add a geojson layer to the map
 
             //this is the api key that is required to access the arcgis api for javascript which is my api key
             esriConfig.apiKey = "AAPK92af26d9842a48ccb552c0ae5e32b5ceJiMRXou8m248fRCfrZyuCLLaXmyktnHdb2BWly3eHgL4zpiJpIXKmteMHEg8TE6w";
