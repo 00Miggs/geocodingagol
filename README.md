@@ -1,7 +1,5 @@
-# helloESRIjs
+# GeoJSONs and Esri.js
 
-adding a new trial run now with using API keys and running esri maps by utikizing HTML, HTML Scripts and CSS
+attempting to run a geoJSON layer with ESRI js
 
-# Link to Completed ArcGIS Maps SDK for Javascript BaseMap
-
-'https://00Miggs.github.io/helloESRIjs/'
+ https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/Links to an external site.
